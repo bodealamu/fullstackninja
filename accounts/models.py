@@ -75,6 +75,23 @@ class CustomUser(PermissionsMixin, AbstractBaseUser):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def __str__(self):
+        fullname = self.get_full_name()
+        return fullname
+
+    def get_full_name(self):
+        firstname = self.first_name
+        lastname = self.last_name
+
+        full_name = str(firstname) + " " + str(lastname)
+
+        return full_name
+
+
+    def get_short_name(self):
+        """ Return the short name representation"""
+        return self.first_name
+
+    def get_email_field_name(self):
         return self.email
 
 

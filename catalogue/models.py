@@ -38,6 +38,7 @@ class Tutorial(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     tutorial_logo = models.ImageField(upload_to="images/Tutorial/", max_length=200,
                                       verbose_name="Logo for tutorial series", blank=False)
+    github_repo_link = models.URLField(verbose_name="Link to github repo", max_length=150)
 
     def __str__(self):
         return self.title
@@ -45,7 +46,7 @@ class Tutorial(models.Model):
 
 class TutorialVideo(models.Model):
     id = models.AutoField(primary_key=True)
-    youtube_link = models.URLField(verbose_name="Youtube link for uploaded video")
+    youtube_link = models.URLField(verbose_name="Youtube link for uploaded video", max_length=150)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     description = models.TextField(verbose_name="Describe what this section is about.")
     video_title = models.CharField(max_length=40, unique=True, verbose_name="Title of uploaded video",)
