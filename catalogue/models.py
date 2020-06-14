@@ -10,6 +10,7 @@ class Category(models.Model):
     description = models.TextField(verbose_name="Describe what this section is about.")
     category_image = models.ImageField(verbose_name="Logo for this category", upload_to="images/Category/",
                                        max_length=200, blank=False)
+    category_slug = models.SlugField(max_length=200, default="default_slug", unique=True)
 
     def __str__(self):
         return self.title
@@ -24,6 +25,7 @@ class SubCategory(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     description = models.TextField(verbose_name="Describe what this section is about.")
     title = models.CharField(max_length=40, unique=True, verbose_name="Name of Sub-Category")
+    subcategory_slug = models.SlugField(max_length=200, default="default_slug", unique=True)
 
     def __str__(self):
         return self.title
@@ -32,13 +34,14 @@ class SubCategory(models.Model):
 class Tutorial(models.Model):
     id = models.AutoField(primary_key=True)
     description = models.TextField(verbose_name="Describe what this section is about.")
-    title = models.CharField(max_length=40, unique=True, verbose_name="Name of Sub-Category")
+    title = models.CharField(max_length=40, unique=True, verbose_name="Name of Tutorial series")
     tutorial_category = models.ForeignKey(to=SubCategory, on_delete=models.CASCADE,
                                           verbose_name="What category does this tutorial belong?")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     tutorial_logo = models.ImageField(upload_to="images/Tutorial/", max_length=200,
                                       verbose_name="Logo for tutorial series", blank=False)
     github_repo_link = models.URLField(verbose_name="Link to github repo", max_length=150)
+    tutorial_series_slug = models.SlugField(max_length=200, default="default_slug", unique=True)
 
     def __str__(self):
         return self.title
@@ -52,6 +55,7 @@ class TutorialVideo(models.Model):
     video_title = models.CharField(max_length=40, unique=True, verbose_name="Title of uploaded video",)
     tutorial_category = models.ForeignKey(to=Tutorial, on_delete=models.CASCADE,
                                           verbose_name="What Tutorial series does this belong?")
+    tutorial_video_slug = models.SlugField(max_length=200, default="default_slug", unique=True)
 
     def __str__(self):
         return self.video_title
