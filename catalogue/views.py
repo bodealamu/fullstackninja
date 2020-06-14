@@ -19,21 +19,37 @@ def home(request):
     return render(request=request, template_name="catalogue/home.html", context=context)
 
 
-def subcategories_list(request, slug_subcategory):
+def subcategories_list(request, slug_category):
     """
     A list view for all the subcategories
     :param request:
     :param slug_subcategory: str, url slug for the chosen subcategory
     :return:
     """
-
-    subcategories = SubCategory.objects.filter(category=slug_subcategory)
+    # find all sub categories whose category slug is given
+    subcategories = SubCategory.objects.filter(Category_category_slug=slug_category)
 
     context = {
         "subcategories":subcategories,
     }
 
     return render(request=request, template_name="catalogue/subcategorieslist.html", context=context)
+
+
+def tutorial_series_list(request,slug_category ,slug_subcategory):
+    """
+
+    :param request:
+    :param slug_subcategory: slug for the subcategory which has the tutorial series
+    :return:
+    """
+    tutorial_series = Tutorial.objects.filter(subcategory_subcategory_slug=slug_subcategory)
+
+    context = {
+        "tutorial_series":tutorial_series,
+    }
+
+    return render(request=request, template_name="catalogue/tutorialseries.html",context=context)
 
 
 
