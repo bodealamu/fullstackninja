@@ -86,7 +86,6 @@ class CustomUser(PermissionsMixin, AbstractBaseUser):
 
         return full_name
 
-
     def get_short_name(self):
         """ Return the short name representation"""
         return self.first_name
