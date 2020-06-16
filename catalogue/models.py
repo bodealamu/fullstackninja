@@ -36,7 +36,7 @@ class Tutorial(models.Model):
     description = models.TextField(verbose_name="Describe what this section is about.")
     title = models.CharField(max_length=40, unique=True, verbose_name="Name of Tutorial series")
     tutorial_category = models.ForeignKey(to=SubCategory, on_delete=models.CASCADE,
-                                          verbose_name="What category does this tutorial belong?")
+                                          verbose_name="What subcategory does this tutorial belong?")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     tutorial_logo = models.ImageField(upload_to="images/Tutorial/", max_length=200,
                                       verbose_name="Logo for tutorial series", blank=False)
