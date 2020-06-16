@@ -11,5 +11,4 @@ urlpatterns = [
     path("subcategory", views.dashboard_subcategory, name="dashboard_subcategory"),
     path("tutorialseries",views.dashboard_tutorialseries, name="dashboard_tutorialseries"),
     path("tutorialvideos", views.dashboard_tutorialvideos, name="dashboard_tutorialvideos"),
-
 ]
