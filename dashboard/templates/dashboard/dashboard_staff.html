@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "catalogue/base.html" %}
 
-</body>
-</html>
+{% block content %}
+
+<div class="jumbotron text-center">
+        <h1 class="display-2">The FullStack Ninja</h1>
+        <h4 class="display-6">Welcome to the Staff page.</h4>
+</div>
+
+<div class="d-flex flex-row justify-content-center">
+    <a href="{% url 'home' %}" class="card mx-1 p-1 flex-fill" style="background-color:#696969;  height:5rem; text-align: center; color: white" role="button">Category</a>
+    <a href="{% url 'home' %}" class="card mx-1 p-1 flex-fill" style="background-color:#18294E; height:5rem; text-align: center;  color: white " role="button">Subcategory</a>
+    <a href="{% url 'home' %}" class="card mx-1 p-1 flex-fill" style="background-color:#21487E; height:5rem; text-align: center;  color: white " role="button">Tutorial Series</a>
+    <a href="{% url 'home' %}" class="card mx-1 p-1 flex-fill" style="background-color:#2F839F; height:5rem; text-align: center;  color: white " role="button">Tutorial Videos</a>
+    <a href="{% url 'home' %}" class="card mx-1 p-1 flex-fill" style="background-color:#C25E7D; height:5rem; text-align: center;  color: white " role="button">Staff</a>
+    <a href="{% url 'home' %}" class="card mx-1 p-1 flex-fill" style="background-color:#7C5A8A; height:5rem; text-align: center;  color: white " role="button">Messages</a>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
