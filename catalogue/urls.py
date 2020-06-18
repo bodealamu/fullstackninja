@@ -7,5 +7,6 @@ from catalogue import views
 urlpatterns = [
     path("", views.home, name="home"),
     path("<str:slug_category>/", views.subcategories_list, name="subcategoriesview"),
+    path("allsubcategories", views.all_subcategorylist, name="allsubcategories")
 
 ]

@@ -1,0 +1,32 @@
+{% extends "catalogue/base.html" %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+      <div class="container">
+        <h1 class="display-4">The FullStack Ninja</h1>
+        <h2 class=" lead">Subcategories</h2>
+        <hr class="my-4">
+      </div>
+    </div>
+    <div class="container">
+      <div class="card-columns ">
+        {% for category in subcategories %}
+          <div class="card p-3 shadow" >
+
+            <img src={{category.subcategory_logo.url}} width="300" height="300" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{category.title}}</h5>
+              <p class="card-text">{{category.description}}</p>
+            </div>
+            <div class="card-body">
+              <a href="#" class="btn btn-primary">Open</a>
+<!--              <a href="#" class="card-link">Another link</a>-->
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+
+{% endblock %}

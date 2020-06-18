@@ -52,4 +52,34 @@ def tutorial_series_list(request,slug_category ,slug_subcategory):
     return render(request=request, template_name="catalogue/tutorialseries.html",context=context)
 
 
+def all_subcategorylist(request):
+    subcategories = SubCategory.objects.all()
+
+    context = {
+        "subcategories": subcategories,
+    }
+
+    return render(request=request, context=context, template_name="catalogue/allsubcategorylist.html")
+
+
+def all_tutorialserieslist(request):
+    tutorialseries = Tutorial.objects.all()
+
+    context = {
+        "tutorialseries": tutorialseries,
+    }
+
+    return render(request=request, context=context, template_name="catalogue/tutorialserieslist.html")
+
+
+# def view_tutorialvideoslist(request):
+#     tutorialvideos = TutorialVideo.objects.all()
+#
+#     context = {
+#         "tutorialvideos": tutorialvideos,
+#     }
+#
+#     return render(request=request, context=context, template_name="dashboard/tutorialvideolist.html")
+
+
 
