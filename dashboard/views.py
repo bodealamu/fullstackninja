@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from catalogue.forms import TutorialForm, TutorialVideoForm, CategoryForm, SubCategoryForm
 from django.template.defaultfilters import slugify
 from django.contrib import messages
+from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo
 
 # Create your views here.
 
@@ -130,3 +131,43 @@ def addtutorialvideos(request):
     }
 
     return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialvideos.html")
+
+
+def view_categorylist(request):
+    categories = Category.objects.all()
+
+    context = {
+        "categories":categories,
+    }
+
+    return render(request=request, context=context, template_name="dashboard/categorylist.html")
+
+
+def view_subcategorylist(request):
+    subcategories = SubCategory.objects.all()
+
+    context = {
+        "subcategories": subcategories,
+    }
+
+    return render(request=request, context=context, template_name="dashboard/subcategorylist.html")
+
+
+def view_tutorialserieslist(request):
+    tutorialseries = Tutorial.objects.all()
+
+    context = {
+        "tutorialseries": tutorialseries,
+    }
+
+    return render(request=request, context=context, template_name="dashboard/tutorialserieslist.html")
+
+
+def view_tutorialvideoslist(request):
+    tutorialvideos = Tutorial.objects.all()
+
+    context = {
+        "tutorialvideos": tutorialvideos,
+    }
+
+    return render(request=request, context=context, template_name="dashboard/tutorialvideolist.html")

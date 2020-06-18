@@ -1,0 +1,36 @@
+{% extends 'catalogue/base.html' %}
+
+{% block content %}
+ <div class="jumbotron text-center">
+    <h1 class="display-2">The FullSTack Ninja</h1>
+    <h4 class="display-6">List of categories.</h4>
+ </div>
+
+<div class="container">
+    {% for category in categories %)
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-11">
+                    <a href="#"> {{category.title}}</a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-2">
+                    <a class="btn btn-success" href="#" >Update</a>
+
+                </div>
+
+                <div class="col-2">
+                    <a class="btn btn-success" href="#" >Update</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
