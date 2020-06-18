@@ -34,6 +34,7 @@ def subcategories_list(request, category_slug):
 
     context = {
         "subcategories":subcategories,
+        "singlecategory":category
     }
 
     return render(request=request, template_name="catalogue/subcategorieslist.html", context=context)
