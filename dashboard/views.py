@@ -164,7 +164,7 @@ def view_tutorialserieslist(request):
 
 
 def view_tutorialvideoslist(request):
-    tutorialvideos = Tutorial.objects.all()
+    tutorialvideos = TutorialVideo.objects.all()
 
     context = {
         "tutorialvideos": tutorialvideos,
