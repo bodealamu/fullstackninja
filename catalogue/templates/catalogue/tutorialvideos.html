@@ -1,0 +1,32 @@
+{% extends "catalogue/base.html" %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+      <div class="container">
+        <h1 class="display-4">The FullStack Ninja</h1>
+          <hr class="my-4">
+        <h2 class=" lead">Tutorial series titled <strong>{{tutorial_series.title}}</strong> </h2>
+
+
+      </div>
+    </div>
+    <div class="container">
+
+        {% for video in tutorial_videos%}
+          <div class="card p-3 shadow" >
+
+            <div class="card-body">
+              <h5 class="card-title">{{video.video_title}}</h5>
+              <p class="card-text">{{video.description}} </p>
+            </div>
+            <div class="card-body">
+              <a href="#" class="btn btn-primary">Watch</a>
+            </div>
+          </div>
+        {% endfor %}
+
+    </div>
+
+
+{% endblock %}

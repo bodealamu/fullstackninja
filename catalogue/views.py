@@ -30,7 +30,6 @@ def subcategories_list(request, category_slug):
     category = get_object_or_404(Category,slug=category_slug)
     # find all sub categories whose category slug is given
     subcategories = SubCategory.objects.filter(classification=category)
-    print(subcategories)
 
     context = {
         "subcategories":subcategories,
@@ -40,7 +39,34 @@ def subcategories_list(request, category_slug):
     return render(request=request, template_name="catalogue/subcategorieslist.html", context=context)
 
 
-def tutorial_series_list(request,category_slug,  slug_subcategory):
+def tutorial_videos_list(request, category_slug, slug_subcategory, tutorial_series_slug):
+    """
+    View function which lists out all the tutorial videos which belong to a tutorial series, subcategory and category
+    :param request:
+    :param category_slug:
+    :param slug_subcategory:
+    :param tutorial_series_slug:
+    :return:
+    """
+    category = get_object_or_404(Category, slug=category_slug)
+    subcategory = get_object_or_404(SubCategory, slug=slug_subcategory)
+    tutorial_series = get_object_or_404(Tutorial, tutorial_series_slug=tutorial_series_slug)
+    tutorial_videos = TutorialVideo.objects.filter(tutorial_category=tutorial_series)
+
+    for tut in tutorial_videos:
+        print(tut.tutorial_video_slug)
+
+    context={
+        "category":category,
+        "subcategory":subcategory,
+        "tutorial_series":tutorial_series,
+        "tutorial_videos":tutorial_videos,
+    }
+
+    return render(request=request, context=context, template_name="catalogue/tutorialvideos.html")
+
+
+def tutorial_series_list(request, category_slug,  slug_subcategory):
     """
     :param request:
     :param slug_subcategory: slug for the subcategory which has the tutorial series
@@ -50,24 +76,12 @@ def tutorial_series_list(request,category_slug,  slug_subcategory):
     subcategory = get_object_or_404(SubCategory, slug=slug_subcategory)
 
     tutorial_series = Tutorial.objects.filter(tutorial_category=subcategory)
-    num_id = subcategory.classification.slug
-
-    print(category)
-    print(subcategory)
-    print(subcategory.classification)
-    print(num_id)
-    print(tutorial_series)
-
-    # print(tutorial_series)
 
     context = {
         "subcategory":subcategory,
         "tutorialseries":tutorial_series,
         "category":category,
     }
-
-    for tut in tutorial_series:
-        print(tut.title)
 
     return render(request=request, template_name="catalogue/tutorialseries.html",context=context)
 

@@ -21,7 +21,7 @@
                   <p class="card-text"></p>
                 </div>
                 <div class="card-body">
-                  <a href="#" class="btn btn-primary">Open</a>
+                  <a href="{% url 'hometutorialvideos' category_slug=category.slug slug_subcategory=subcategory.slug tutorial_series_slug=tutorial.tutorial_series_slug %}" class="btn btn-primary">Open</a>
                 </div>
               </div>
           {% endfor %}
