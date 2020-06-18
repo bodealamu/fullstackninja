@@ -69,7 +69,7 @@ def all_tutorialserieslist(request):
         "tutorialseries": tutorialseries,
     }
 
-    return render(request=request, context=context, template_name="catalogue/tutorialserieslist.html")
+    return render(request=request, context=context, template_name="catalogue/alltutorialserieslist.html")
 
 
 # def view_tutorialvideoslist(request):
