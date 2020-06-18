@@ -17,6 +17,6 @@ urlpatterns = [
     path("addtutorialvideos", views.addtutorialvideos, name="addtutorialvideos"),
     path("categorylist", views.view_categorylist, name="categorylist"),
     path("subcategorylist", views.view_subcategorylist, name="subcategorylist"),
-    path("tutorialseries", views.view_tutorialserieslist, name="tutorialseries"),
-    path("tutorialvideos", views.view_tutorialvideoslist, name="tutorialvideos"),
+    path("tutorialserieslist", views.view_tutorialserieslist, name="tutorialserieslist"),
+    path("tutorialvideoslist", views.view_tutorialvideoslist, name="tutorialvideoslist"),
 ]
