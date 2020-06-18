@@ -39,12 +39,12 @@ def addcategory(request):
         if form.is_valid():
             submission = form.save(commit=False)
             title = form.cleaned_data["title"]
-            slug_title =slugify(title)
+            slug_title = slugify(title)
             logged_in_user = request.user
             submission.author = logged_in_user
-            submission.category_slug = slug_title
+            submission.slug = slug_title
             form.save(commit=True)
-            message = "Event has been successfully added."
+            message = "Category has been successfully added."
             messages.success(request=request, message=message)
 
             return redirect(to= "dashboard")
@@ -69,7 +69,7 @@ def addsubcategory(request):
             logged_in_user = request.user
 
             submission.author = logged_in_user
-            submission.subcategory_slug = slugged_title
+            submission.slug  = slugged_title
             form.save(commit=True)
             message = "Subcategory successfully added"
             messages.success(request=request, message=message)

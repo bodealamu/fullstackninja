@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -19,15 +20,17 @@ def home(request):
     return render(request=request, template_name="catalogue/home.html", context=context)
 
 
-def subcategories_list(request, slug_category):
+def subcategories_list(request, category_slug):
     """
-    A list view for all the subcategories
+    A list view for all the subcategories under a category
     :param request:
     :param slug_subcategory: str, url slug for the chosen subcategory
     :return:
     """
+    category = get_object_or_404(Category,slug=category_slug)
     # find all sub categories whose category slug is given
-    subcategories = SubCategory.objects.filter(Category_category_slug=slug_category)
+    subcategories = SubCategory.objects.filter(classification=category)
+    print(subcategories)
 
     context = {
         "subcategories":subcategories,
@@ -36,18 +39,34 @@ def subcategories_list(request, slug_category):
     return render(request=request, template_name="catalogue/subcategorieslist.html", context=context)
 
 
-def tutorial_series_list(request,slug_category ,slug_subcategory):
+def tutorial_series_list(request,category_slug,  slug_subcategory):
     """
-
     :param request:
     :param slug_subcategory: slug for the subcategory which has the tutorial series
     :return:
     """
-    tutorial_series = Tutorial.objects.filter(subcategory_subcategory_slug=slug_subcategory)
+    category = get_object_or_404(Category, slug=category_slug)
+    subcategory = get_object_or_404(SubCategory, slug=slug_subcategory)
+
+    tutorial_series = Tutorial.objects.filter(tutorial_category=subcategory)
+    num_id = subcategory.classification.slug
+
+    print(category)
+    print(subcategory)
+    print(subcategory.classification)
+    print(num_id)
+    print(tutorial_series)
+
+    # print(tutorial_series)
 
     context = {
-        "tutorial_series":tutorial_series,
+        "subcategory":subcategory,
+        "tutorialseries":tutorial_series,
+        "category":category,
     }
+
+    for tut in tutorial_series:
+        print(tut.title)
 
     return render(request=request, template_name="catalogue/tutorialseries.html",context=context)
 
@@ -72,14 +91,7 @@ def all_tutorialserieslist(request):
     return render(request=request, context=context, template_name="catalogue/alltutorialserieslist.html")
 
 
-# def view_tutorialvideoslist(request):
-#     tutorialvideos = TutorialVideo.objects.all()
-#
-#     context = {
-#         "tutorialvideos": tutorialvideos,
-#     }
-#
-#     return render(request=request, context=context, template_name="dashboard/tutorialvideolist.html")
+
 
 
 
