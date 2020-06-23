@@ -19,9 +19,10 @@
             <div class="card-body">
               <h5 class="card-title">{{category.title}}</h5>
               <p class="card-text">{{category.description}}</p>
+                <p>{{category.tutorial_series_slug}}</p>
             </div>
             <div class="card-body">
-              <a href="#" class="btn btn-primary">Open</a>
+              <a href="{% url 'tutorialvideos' tutorial_series_slug=category.tutorial_series_slug %}" class="btn btn-primary">Open</a>
 <!--              <a href="#" class="card-link">Another link</a>-->
             </div>
           </div>

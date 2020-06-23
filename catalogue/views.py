@@ -51,10 +51,14 @@ def tutorial_videos_list(request, category_slug, slug_subcategory, tutorial_seri
     category = get_object_or_404(Category, slug=category_slug)
     subcategory = get_object_or_404(SubCategory, slug=slug_subcategory)
     tutorial_series = get_object_or_404(Tutorial, tutorial_series_slug=tutorial_series_slug)
+    print(tutorial_series_slug)
+    print("jjhhgghjgg")
+    print(tutorial_series)
     tutorial_videos = TutorialVideo.objects.filter(tutorial_category=tutorial_series)
+    print(tutorial_videos)
 
-    for tut in tutorial_videos:
-        print(tut.tutorial_video_slug)
+    # for tut in tutorial_videos:
+    #     print(tut.tutorial_video_slug)
 
     context={
         "category":category,
@@ -105,6 +109,41 @@ def all_tutorialserieslist(request):
 
     return render(request=request, context=context, template_name="catalogue/alltutorialserieslist.html")
 
+
+def tutorial_by_subcategory(request, slug_subcategory):
+    subcategory = get_object_or_404(SubCategory, slug=slug_subcategory)
+    print(subcategory)
+
+    tutorial_series = Tutorial.objects.filter(tutorial_category=subcategory)
+
+
+    # tutorial_series = Tutorial.objects.filter(tutorial_category=)
+
+    context = {
+        "tutorialseries":tutorial_series,
+    }
+
+    return render(request=request, context=context, template_name="catalogue/tutorialbysubcategory.html")
+
+
+def tutorial_series_by_all_tutorials(request,   tutorial_series_slug):
+    """
+    :param request:
+    :param slug_subcategory: slug for the subcategory which has the tutorial series
+    :return:
+    """
+    print("im here")
+
+    tutorial_series = get_object_or_404(Tutorial, tutorial_series_slug=tutorial_series_slug)
+    print(tutorial_series)
+
+    tutorial_videos = TutorialVideo.objects.filter(tutorial_category=tutorial_series)
+
+    context = {
+        "tutorialseries":tutorial_series,
+    }
+
+    return render(request=request, template_name="catalogue/t.html",context=context)
 
 
 
