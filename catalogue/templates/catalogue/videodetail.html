@@ -1,0 +1,32 @@
+{% extends "catalogue/base.html" %}
+
+{% block content %}
+
+<!--<div class="jumbotron text-center">-->
+<!--      <div class="container">-->
+<!--        <h1 class="display-4">The FullStack Ninja</h1>-->
+<!--          <hr class="my-4">-->
+<!--        <h2 class=" lead">Video title: <strong>{{videofile.video_title}}</strong> </h2>-->
+
+<!--      </div>-->
+<!--</div>-->
+
+<div class="container">
+    <div class="card p-3 shadow ">
+        <div class="embed-responsive embed-responsive-16by9">
+             <iframe src="{{videofile.youtube_link}}" >
+
+            </iframe>
+        </div>
+
+
+    </div>
+    <p>{{videofile.video_title}}</p>
+
+
+
+</div>
+
+
+
+{% endblock %}

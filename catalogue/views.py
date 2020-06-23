@@ -70,6 +70,37 @@ def tutorial_videos_list(request, category_slug, slug_subcategory, tutorial_seri
     return render(request=request, context=context, template_name="catalogue/tutorialvideos.html")
 
 
+def tutorial_videos_details(request, category_slug, slug_subcategory, tutorial_series_slug, video_slug):
+    """
+    View function which lists out all the tutorial videos which belong to a tutorial series, subcategory and category
+    :param request:
+    :param category_slug:
+    :param slug_subcategory:
+    :param tutorial_series_slug:
+    :return:
+    """
+    category = get_object_or_404(Category, slug=category_slug)
+    subcategory = get_object_or_404(SubCategory, slug=slug_subcategory)
+    tutorial_series = get_object_or_404(Tutorial, tutorial_series_slug=tutorial_series_slug)
+
+    tutorial_videos = TutorialVideo.objects.filter(tutorial_category=tutorial_series)
+
+    video = get_object_or_404(TutorialVideo, tutorial_video_slug=video_slug)
+    print(video)
+
+
+
+    context={
+        "category":category,
+        "subcategory":subcategory,
+        "tutorial_series":tutorial_series,
+        "tutorial_videos":tutorial_videos,
+        "videofile":video,
+    }
+
+    return render(request=request, context=context, template_name="catalogue/videodetail.html")
+
+
 def tutorial_series_list(request, category_slug,  slug_subcategory):
     """
     :param request:
