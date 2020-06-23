@@ -4,10 +4,11 @@
 
 <div class="jumbotron text-center">
       <div class="container">
-        <h1 class="display-4">The FullStack Ninja</h1>
+        <h1 class="display-3">The FullStack Ninja</h1>
           <hr class="my-4">
+          <h1 class=" display-4">{{tutorial_series.title}}</h1>
         <h2 class=" lead">Video title: <strong>{{videofile.video_title}}</strong> </h2>
-          <p class="lead">{{videofile.description}} </p>
+<!--          <p class="lead">{{videofile.description}} </p>-->
 
       </div>
 </div>
@@ -16,35 +17,25 @@
 <div class="row">
     <div class="col-md-9">
         <div class="container">
-            <div class="card p-3 shadow ">
-<!--                <h3 class="display-4">{{videofile.video_title}}</h3>-->
-
-                <div class="embed-responsive embed-responsive-16by9">
-                     <iframe src="{{videofile.youtube_link}}" >
-                    </iframe>
+            <div class="container">
+                <div class="card p-3 shadow ">
+                    <div class="embed-responsive embed-responsive-16by9">
+                         <iframe src="{{videofile.youtube_link}}" >
+                        </iframe>
+                    </div>
                 </div>
             </div>
-            <p></p>
         </div>
-
     </div>
     <div class="col-md-2.5">
         {% for video in tutorial_videos %}
-         <div class="card p-3 shadow" >
+         <div class="card p-1 shadow" >
             <div class="card-body">
-              <h5 class="card-title">{{video.video_title}}</h5>
-<!--                <a href="#" class="btn btn-primary">Watch</a>-->
-<!--                <iframe-->
-<!--                src="{{video.youtube_link}}"></iframe>-->
+                <a href="#"><h6 class="card-title">{{video.video_title}}</h6></a>
             </div>
-<!--            <div class="card-body">-->
-<!--              <a href="#" class="btn btn-primary">Watch</a>-->
-<!--            </div>-->
           </div>
-
         {% endfor %}
     </div>
-
 </div>
 
 <br>
