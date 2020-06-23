@@ -84,6 +84,7 @@ def tutorial_videos_details(request, category_slug, slug_subcategory, tutorial_s
     tutorial_series = get_object_or_404(Tutorial, tutorial_series_slug=tutorial_series_slug)
 
     tutorial_videos = TutorialVideo.objects.filter(tutorial_category=tutorial_series)
+    print(tutorial_videos)
 
     video = get_object_or_404(TutorialVideo, tutorial_video_slug=video_slug)
     print(video)
