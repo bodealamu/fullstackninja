@@ -6,8 +6,10 @@
       <div class="container">
         <h1 class="display-3">The FullStack Ninja</h1>
           <hr class="my-4">
-          <h1 class=" display-4">{{tutorial_series.title}}</h1>
+<!--          <h1 class="lead">{{tutorial_series.title}}</h1>-->
+          <h2 class=" lead">Tutorial series titled <strong>{{tutorial_series.title}}</strong> </h2>
         <h2 class=" lead">Video title: <strong>{{videofile.video_title}}</strong> </h2>
+          <p>Github repo <a href="{{tutorial_series.github_repo_link}}" target="_blank">Download source code here</a></p>
 <!--          <p class="lead">{{videofile.description}} </p>-->
 
       </div>
@@ -31,6 +33,7 @@
         {% for video in tutorial_videos %}
          <div class="card p-1 shadow" >
             <div class="card-body">
+                <h4></h4>
                 <a href="#"><h6 class="card-title">{{video.video_title}}</h6></a>
             </div>
           </div>
