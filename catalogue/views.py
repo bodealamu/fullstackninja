@@ -88,6 +88,7 @@ def tutorial_videos_details(request, category_slug, slug_subcategory, tutorial_s
 
     video = get_object_or_404(TutorialVideo, tutorial_video_slug=video_slug)
     print(video)
+    all_subcategories = SubCategory.objects.filter(classification=category)
 
 
 
@@ -97,6 +98,7 @@ def tutorial_videos_details(request, category_slug, slug_subcategory, tutorial_s
         "tutorial_series":tutorial_series,
         "tutorial_videos":tutorial_videos,
         "videofile":video,
+        "all_subcategories": all_subcategories,
     }
 
     return render(request=request, context=context, template_name="catalogue/videodetail.html")

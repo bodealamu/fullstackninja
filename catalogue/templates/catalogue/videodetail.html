@@ -10,8 +10,9 @@
           <h2 class=" lead">Tutorial series titled <strong>{{tutorial_series.title}}</strong> </h2>
         <h2 class=" lead">Video title: <strong>{{videofile.video_title}}</strong> </h2>
           <p>Github repo <a href="{{tutorial_series.github_repo_link}}" target="_blank">Download source code here</a></p>
-<!--          <p>{{category.title}}</p>-->
-<!--          <p>{{subcategory.title}}</p>-->
+          <p>{{category.title}}</p>
+          <P>{{category.slug}}</P>
+          <p>{{subcategory.title}}</p>
 
       </div>
 </div>
@@ -39,6 +40,27 @@
           </div>
         {% endfor %}
     </div>
+</div>
+<hr class="my-4">
+<br>
+<div class='row'>
+
+    <div class="col-md-9">
+
+        <div class="container">
+            <h3>Subcategories under {{category.title}}</h3>
+            <br>
+            <div class="d-flex flex-row justify-content-center">
+                {% for sub in all_subcategories %}
+                <a href="{% url 'hometutorialseries' category_slug=category.slug slug_subcategory=sub.slug %}" class="card mx-1 p-1 flex-fill" style="background-color:#18294E;  height:3rem; text-align: center; color: white" role="button">{{sub.title}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+
 </div>
 
 <br>
