@@ -10,7 +10,8 @@
           <h2 class=" lead">Tutorial series titled <strong>{{tutorial_series.title}}</strong> </h2>
         <h2 class=" lead">Video title: <strong>{{videofile.video_title}}</strong> </h2>
           <p>Github repo <a href="{{tutorial_series.github_repo_link}}" target="_blank">Download source code here</a></p>
-<!--          <p class="lead">{{videofile.description}} </p>-->
+<!--          <p>{{category.title}}</p>-->
+<!--          <p>{{subcategory.title}}</p>-->
 
       </div>
 </div>
@@ -33,8 +34,7 @@
         {% for video in tutorial_videos %}
          <div class="card p-1 shadow" >
             <div class="card-body">
-                <h4></h4>
-                <a href="#"><h6 class="card-title">{{video.video_title}}</h6></a>
+                <h4> <a class="card-title" href="{% url 'videodetail' category_slug=category.slug slug_subcategory=subcategory.slug tutorial_series_slug=tutorial_series.tutorial_series_slug video_slug=video.tutorial_video_slug %}">{{video.video_title}}</a> </h4>
             </div>
           </div>
         {% endfor %}
