@@ -148,22 +148,6 @@ def all_tutorialserieslist(request):
     return render(request=request, context=context, template_name="catalogue/alltutorialserieslist.html")
 
 
-def tutorial_by_subcategory(request, slug_subcategory):
-    subcategory = get_object_or_404(SubCategory, slug=slug_subcategory)
-    print(subcategory)
-
-    tutorial_series = Tutorial.objects.filter(tutorial_category=subcategory)
-
-
-    # tutorial_series = Tutorial.objects.filter(tutorial_category=)
-
-    context = {
-        "tutorialseries":tutorial_series,
-    }
-
-    return render(request=request, context=context, template_name="catalogue/tutorialbysubcategory.html")
-
-
 def tutorial_series_by_all_tutorials(request,   tutorial_series_slug):
     """
     :param request:

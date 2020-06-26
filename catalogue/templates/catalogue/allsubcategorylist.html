@@ -20,9 +20,10 @@
               <h5 class="card-title">{{category.title}}</h5>
                 <p>{{category.slug}}</p>
               <p class="card-text">{{category.description}}</p>
+                <p>{{category.classification.slug}}</p>
             </div>
             <div class="card-body">
-              <a href="{% url 'tutorialbysubcategory' slug_subcategory=category.slug %}" class="btn btn-primary">Open</a>
+              <a href="{% url 'hometutorialseries' category_slug=category.classification.slug  slug_subcategory=category.slug %}" class="btn btn-primary">Open</a>
 
             </div>
           </div>

@@ -12,7 +12,6 @@ urlpatterns = [
     path("<str:category_slug>/<str:slug_subcategory>/", views.tutorial_series_list, name="hometutorialseries"),
     path("<str:category_slug>/<str:slug_subcategory>/<str:tutorial_series_slug>/",
          views.tutorial_videos_list, name="hometutorialvideos"),
-    path("allsubcategory/<str:slug_subcategory>/", views.tutorial_by_subcategory, name="tutorialbysubcategory"),
     path("all/<str:tutorial_series_slug>/",
          views.tutorial_series_by_all_tutorials, name="tutorialvideos"),
     path("<str:category_slug>/<str:slug_subcategory>/<str:tutorial_series_slug>/<str:video_slug>/",
