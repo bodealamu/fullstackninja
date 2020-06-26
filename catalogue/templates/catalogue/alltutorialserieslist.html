@@ -6,7 +6,7 @@
       <div class="container">
         <h1 class="display-4">The FullStack Ninja</h1>
            <hr class="my-4">
-        <h2 class=" lead">All Tutorial series</h2>
+        <h2 class=" lead">All Tutorial Series</h2>
 
       </div>
     </div>
@@ -19,9 +19,9 @@
             <div class="card-body">
               <h5 class="card-title">{{tutorial.title}}</h5>
               <p class="card-text">{{tutorial.description}}</p>
-                <p>{{tutorial.tutorial_series_slug}}</p>
-                <p>{{tutorial.tutorial_category.slug}}</p>
-                <p>{{tutorial.tutorial_category.classification.slug}}</p>
+<!--                <p>{{tutorial.tutorial_series_slug}}</p>-->
+<!--                <p>{{tutorial.tutorial_category.slug}}</p>-->
+<!--                <p>{{tutorial.tutorial_category.classification.slug}}</p>-->
             </div>
             <div class="card-body">
               <a href="{% url 'hometutorialvideos' category_slug=tutorial.tutorial_category.classification.slug slug_subcategory=tutorial.tutorial_category.slug tutorial_series_slug=tutorial.tutorial_series_slug %}" class="btn btn-primary">Open</a>
