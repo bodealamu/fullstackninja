@@ -15,7 +15,7 @@
     <link href=" {% static 'css/bootstrap-reboot.css' %}" rel="stylesheet">
 <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
 
-    <title>Full stack Ninja</title>
+    <title>The Full Stack Ninja</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -28,12 +28,12 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
           </li>
-<!--          <li class="nav-item active">-->
-<!--            <a class="nav-link" href="{% url 'allsubcategories' %}">Sub-categories <span class="sr-only">(current)</span></a>-->
-<!--          </li>-->
-<!--          <li class="nav-item active">-->
-<!--            <a class="nav-link" href="{% url 'alltutorialserieslist' %}">Tutorial series</a>-->
-<!--          </li>-->
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'allsubcategories' %}">Tutorial Subcategories <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'alltutorialserieslist' %}">Tutorial Series</a>
+          </li>
           {% if user.is_superuser %}
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'dashboard' %}">Admin Dashboard</a>

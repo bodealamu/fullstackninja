@@ -12,9 +12,13 @@ def home(request):
     :return:
     """
     categories = Category.objects.all()
+    all_videos = TutorialVideo.objects.all()
+
+    number_tutorial_videos = len(all_videos)
 
     context={
         "categories":categories,
+        "number_tutorial_videos":number_tutorial_videos,
     }
 
     return render(request=request, template_name="catalogue/home.html", context=context)
