@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from catalogue.forms import TutorialForm, TutorialVideoForm, CategoryForm, SubCategoryForm
 from django.template.defaultfilters import slugify
 from django.contrib import messages
@@ -171,3 +171,32 @@ def view_tutorialvideoslist(request):
     }
 
     return render(request=request, context=context, template_name="dashboard/tutorialvideolist.html")
+
+
+def delete_category(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    category.delete()
+    messages.warning(request=request, message="Category has been deleted")
+    return redirect(to="dashboard")
+
+
+def delete_subcategory(request, pk):
+    subcategory = get_object_or_404(SubCategory, pk=pk)
+    subcategory.delete()
+    messages.warning(request=request, message="Subcategory has been deleted.")
+    return redirect(to="dashboard")
+
+
+def delete_tutorial(request, pk):
+    tutorial = get_object_or_404(Tutorial, pk=pk)
+    tutorial.delete()
+    messages.warning(request=request, message="Tutorial series has been deleted.")
+    return redirect(to="dashboard")
+
+
+def delete_tutorial_video(request, pk):
+    video = get_object_or_404(TutorialVideo, pk=pk)
+    video.delete()
+    messages.warning(request=request, message="Tutorial video has been deleted.")
+    return redirect(to="dashboard")
+
