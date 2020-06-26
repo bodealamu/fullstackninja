@@ -148,24 +148,6 @@ def all_tutorialserieslist(request):
     return render(request=request, context=context, template_name="catalogue/alltutorialserieslist.html")
 
 
-# def tutorial_series_by_all_tutorials(request,   tutorial_series_slug):
-#     """
-#     :param request:
-#     :param slug_subcategory: slug for the subcategory which has the tutorial series
-#     :return:
-#     """
-#     print("im here")
-#
-#     tutorial_series = get_object_or_404(Tutorial, tutorial_series_slug=tutorial_series_slug)
-#     print(tutorial_series)
-#
-#     tutorial_videos = TutorialVideo.objects.filter(tutorial_category=tutorial_series)
-#
-#     context = {
-#         "tutorialseries":tutorial_series,
-#     }
-#
-#     return render(request=request, template_name="catalogue/t.html",context=context)
 
 
 
