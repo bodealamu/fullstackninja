@@ -8,7 +8,7 @@ class TutorialForm(forms.ModelForm):
         fields = ["title","description","tutorial_category","author","tutorial_logo","github_repo_link"]
         widgets = {
             "title":forms.TextInput(attrs={'class':'form-control'}),
-            "description": forms.TextInput(attrs={'class': 'form-control'}),
+            "description":forms.Textarea(attrs={'class':'form-control'}),
             "github_repo_link": forms.TextInput(attrs={'class': 'form-control'}),
 
         }
