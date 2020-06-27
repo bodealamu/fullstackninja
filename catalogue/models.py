@@ -60,3 +60,13 @@ class TutorialVideo(models.Model):
     def __str__(self):
         return self.video_title
 
+
+class Contact(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=30, verbose_name="Your full name (30 characters)")
+    email = models.EmailField(max_length=50, verbose_name="Your email address")
+    message = models.TextField(verbose_name="Message")
+
+    def __str__(self):
+        return self.name
+

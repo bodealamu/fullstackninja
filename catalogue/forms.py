@@ -1,4 +1,4 @@
-from catalogue.models import Tutorial, TutorialVideo, Category, SubCategory
+from catalogue.models import Tutorial, TutorialVideo, Category, SubCategory, Contact
 from django import forms
 
 
@@ -42,6 +42,17 @@ class SubCategoryForm(forms.ModelForm):
         widgets = {
             "title":forms.TextInput(attrs={'class':'form-control'}),
             "description":forms.Textarea(attrs={'class':'form-control'}),
+        }
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ["name", "email","message"]
+        widgets = {
+            "name":forms.TextInput(attrs={"class":"form-control"}),
+            "email": forms.EmailInput(attrs={"class":"form-control"}),
+            "message": forms.Textarea(attrs={"class":"form-control"}),
         }
 
 
