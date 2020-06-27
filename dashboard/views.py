@@ -262,3 +262,7 @@ def update_tutorialvideo(request, pk):
 
     return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialvideos.html")
 
+
+def dashboard_messages(request):
+    return render(request=request, context=None, template_name="dashboard/dashboard_messages.html")
+

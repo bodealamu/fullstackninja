@@ -27,4 +27,5 @@ urlpatterns = [
     path("updatesubcategory/<int:pk>", views.update_subcategory, name="updatesubcategory"),
     path("updatetutorial/<int:pk>", views.update_tutorial, name="updatetutorial"),
     path("updatetutorialvideo/<int:pk>", views.update_tutorialvideo, name="updatetutorialvideo"),
+    path("messages", views.dashboard_messages, name="dashboard_messages"),
 ]
