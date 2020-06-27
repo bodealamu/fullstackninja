@@ -253,7 +253,7 @@ def update_tutorialvideo(request, pk):
 
     if form.is_valid():
         form.save()
-        messages.success(request=request, message="Congratulations! Category has been updated.")
+        messages.success(request=request, message="Congratulations! Tutorial video has been updated.")
         return redirect(to="dashboard")
 
     context={
