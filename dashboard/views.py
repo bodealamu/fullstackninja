@@ -200,3 +200,46 @@ def delete_tutorial_video(request, pk):
     messages.warning(request=request, message="Tutorial video has been deleted.")
     return redirect(to="dashboard")
 
+
+def update_category(request,pk):
+    category = get_object_or_404(Category, pk=pk)
+    form = CategoryForm(request.POST or None, request.FILES or None, instance=category)
+    if form.is_valid():
+        form.save(commit=True)
+        messages.success(request=request, message="Congratulations! Category has been updated.")
+
+    return redirect(to="dashboard")
+
+
+def update_subcategory(request,pk):
+    subcategory = get_object_or_404(SubCategory, pk=pk)
+    form = SubCategoryForm(request.POST or None, request.FILES or None, instance=subcategory)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request=request, message="Congratulations! Subcategory has been updated.")
+
+    return redirect(to="dashboard")
+
+
+def update_tutorial(request,pk):
+    tutorial = get_object_or_404(Tutorial, pk=pk)
+    form = TutorialForm(request.POST or None, request.FILES or None, instance=tutorial)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request=request, message="Congratulations! Tutorial has been updated.")
+
+    return redirect(to="dashboard")
+
+
+def update_tutorialvideo(request,pk):
+    video = get_object_or_404(TutorialVideo, pk=pk)
+    form = TutorialVideoForm(request.POST or None, request.FILES or None, instance=video)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request=request, message="Congratulations! Category has been updated.")
+
+    return redirect(to="dashboard")
+
