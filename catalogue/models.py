@@ -66,6 +66,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=30, verbose_name="Your full name (30 characters)")
     email = models.EmailField(max_length=50, verbose_name="Your email address")
     message = models.TextField(verbose_name="Message")
+    message_read = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

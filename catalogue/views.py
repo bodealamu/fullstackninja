@@ -1,8 +1,25 @@
 from django.shortcuts import render
-from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo
+from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo, Contact
 from django.shortcuts import get_object_or_404
+from catalogue.forms import ContactForm
 
 # Create your views here.
+
+
+def contactpage(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = ContactForm()
+
+    context = {
+        "form":form,
+    }
+
+    return render(request=request, context=context, template_name="catalogue/contact.html")
 
 
 def home(request):
