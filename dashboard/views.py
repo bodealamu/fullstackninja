@@ -207,8 +207,13 @@ def update_category(request,pk):
     if form.is_valid():
         form.save(commit=True)
         messages.success(request=request, message="Congratulations! Category has been updated.")
+        return redirect(to="dashboard")
 
-    return redirect(to="dashboard")
+    context={
+        "form":form,
+    }
+
+    return render(request=request, context=context, template_name="dashboard/dashboard_addcategory.html")
 
 
 def update_subcategory(request,pk):
@@ -218,8 +223,12 @@ def update_subcategory(request,pk):
     if form.is_valid():
         form.save()
         messages.success(request=request, message="Congratulations! Subcategory has been updated.")
+        return redirect(to="dashboard")
+    context={
+        "form":form,
+    }
 
-    return redirect(to="dashboard")
+    return render(request=request, template_name="dashboard/dashboard_addsubcategory.html", context=context)
 
 
 def update_tutorial(request,pk):
@@ -229,8 +238,13 @@ def update_tutorial(request,pk):
     if form.is_valid():
         form.save()
         messages.success(request=request, message="Congratulations! Tutorial has been updated.")
+        return redirect(to="dashboard")
 
-    return redirect(to="dashboard")
+    context={
+        "form":form,
+    }
+
+    return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialseries.html")
 
 
 def update_tutorialvideo(request,pk):
@@ -240,6 +254,11 @@ def update_tutorialvideo(request,pk):
     if form.is_valid():
         form.save()
         messages.success(request=request, message="Congratulations! Category has been updated.")
+        return redirect(to="dashboard")
 
-    return redirect(to="dashboard")
+    context={
+        "form":form,
+    }
+
+    return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialvideos.html")
 
