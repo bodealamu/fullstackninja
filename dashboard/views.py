@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from catalogue.forms import TutorialForm, TutorialVideoForm, CategoryForm, SubCategoryForm
 from django.template.defaultfilters import slugify
 from django.contrib import messages
-from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo
+from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo, Contact
 
 # Create your views here.
 
@@ -265,4 +265,24 @@ def update_tutorialvideo(request, pk):
 
 def dashboard_messages(request):
     return render(request=request, context=None, template_name="dashboard/dashboard_messages.html")
+
+
+def view_read_messages(request):
+    read_messages = Contact.objects.filter(message_read=True)
+
+    context = {
+        "read_messages": read_messages,
+    }
+
+    return render(context=context, request=request, template_name="dashboard/read_messages.html")
+
+
+def view_unread_messages(request):
+    unread_messages = Contact.objects.filter(message_read=False)
+
+    context = {
+        "unread_messages":unread_messages,
+    }
+
+    return render(context=context, request=request, template_name="dashboard/unread_messages.html")
 
