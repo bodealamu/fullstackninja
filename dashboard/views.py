@@ -247,7 +247,7 @@ def update_tutorial(request,pk):
     return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialseries.html")
 
 
-def update_tutorialvideo(request,pk):
+def update_tutorialvideo(request, pk):
     video = get_object_or_404(TutorialVideo, pk=pk)
     form = TutorialVideoForm(request.POST or None, request.FILES or None, instance=video)
 
