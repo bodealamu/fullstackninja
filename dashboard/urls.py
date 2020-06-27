@@ -23,8 +23,8 @@ urlpatterns = [
     path("deletesubcategory/<int:pk>",views.delete_subcategory, name="deletesubcategory"),
     path("deletetutorial/<int:pk>",views.delete_tutorial, name="deletetutorial"),
     path("deletetutorialvideo/<int:pk>",views.delete_tutorial_video, name="deletetutorialvideo"),
-    path("updatecategory/<int:pk>", views.delete_category, name="updatecategory"),
-    path("updatesubcategory/<int:pk>", views.delete_subcategory, name="updatesubcategory"),
-    path("updatetutorial/<int:pk>", views.delete_tutorial, name="updatetutorial"),
-    path("updatetutorialvideo/<int:pk>", views.delete_tutorial_video, name="updatetutorialvideo"),
+    path("updatecategory/<int:pk>", views.update_category, name="updatecategory"),
+    path("updatesubcategory/<int:pk>", views.update_subcategory, name="updatesubcategory"),
+    path("updatetutorial/<int:pk>", views.update_tutorial, name="updatetutorial"),
+    path("updatetutorialvideo/<int:pk>", views.update_tutorialvideo, name="updatetutorialvideo"),
 ]
