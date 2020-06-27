@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo, Contact
 from django.shortcuts import get_object_or_404
 from catalogue.forms import ContactForm
@@ -11,6 +11,9 @@ def contactpage(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
+
+            return redirect(to="home")
+
 
     else:
         form = ContactForm()

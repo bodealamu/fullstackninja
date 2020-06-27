@@ -12,6 +12,19 @@
     <div class="container">
         <p>Please contact me using the form below</p>
 
+            <form action="" method="POST" novalidate enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{form.as_p}}
+                </div>
+                <button type="submit" class="btn btn-primary" style="background-color: rgb(57, 5, 99); ">Submit</button>
+            </form>
+
+
+
+
+
+
 
     </div>
 

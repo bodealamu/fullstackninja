@@ -14,5 +14,6 @@ urlpatterns = [
          views.tutorial_videos_list, name="hometutorialvideos"),
     path("<str:category_slug>/<str:slug_subcategory>/<str:tutorial_series_slug>/<str:video_slug>/",
          views.tutorial_videos_details, name="videodetail"),
+    path("contactpage", views.contactpage, name="contactpage"),
 ]
 
