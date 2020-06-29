@@ -28,4 +28,6 @@ urlpatterns = [
     path("updatetutorial/<int:pk>", views.update_tutorial, name="updatetutorial"),
     path("updatetutorialvideo/<int:pk>", views.update_tutorialvideo, name="updatetutorialvideo"),
     path("messages", views.dashboard_messages, name="dashboard_messages"),
+    path("deletemessages/<int:pk>", views.delete_read_messages, name="deletemessage"),
+    path("viewreadmessages", views.view_read_messages, name="viewreadmessages")
 ]

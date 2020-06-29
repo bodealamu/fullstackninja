@@ -286,3 +286,12 @@ def view_unread_messages(request):
 
     return render(context=context, request=request, template_name="dashboard/unread_messages.html")
 
+
+def delete_read_messages(request, pk):
+    message = get_object_or_404(Contact, pk)
+    message.delete()
+
+    messages.warning(request=request, message="Message has been deleted.")
+
+    return redirect(to="dashboard")
+
