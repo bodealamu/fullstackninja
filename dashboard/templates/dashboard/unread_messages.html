@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "catalogue/base.html" %}
 
-</body>
-</html>
+{% block content %}
+ <div class="jumbotron text-center">
+    <h1 class="display-2">The FullStack Ninja</h1>
+    <h4 class="display-6">Already read messages.</h4>
+ </div>
+
+<div class="container">
+    {% for message in unread_messages %}
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-10">
+                        <p>{{ message.name }}</p>
+                        <p>{{ message.email}}</p>
+                        <p>{{ message.message }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2">
+                        <a class="btn btn-danger" href="{% url 'markasread' pk=message.pk %}" >Mark as read</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

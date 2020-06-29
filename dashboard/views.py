@@ -288,10 +288,19 @@ def view_unread_messages(request):
 
 
 def delete_read_messages(request, pk):
-    message = get_object_or_404(Contact, pk)
-    message.delete()
+    read_message = get_object_or_404(Contact, pk)
+    read_message.delete()
 
     messages.warning(request=request, message="Message has been deleted.")
 
     return redirect(to="dashboard")
+
+
+def mark_as_read(request, pk):
+    unread_message = get_object_or_404(Contact, pk=pk)
+    unread_message.message_read = True
+    unread_message.save()
+    messages.success(request=request, message="Message has been read.")
+
+    return redirect(to="viewreadmessages")
 
