@@ -288,7 +288,8 @@ def view_unread_messages(request):
 
 
 def delete_read_messages(request, pk):
-    read_message = get_object_or_404(Contact, pk)
+    read_message = get_object_or_404(Contact, pk=pk)
+    print(read_message)
     read_message.delete()
 
     messages.warning(request=request, message="Message has been deleted.")
