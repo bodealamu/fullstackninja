@@ -3,10 +3,12 @@ from catalogue.forms import TutorialForm, TutorialVideoForm, CategoryForm, SubCa
 from django.template.defaultfilters import slugify
 from django.contrib import messages
 from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo, Contact
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
 
+@staff_member_required(login_url="accounts/login.html")
 def dashboard(request):
     return render(request=request, context=None, template_name="dashboard/dashboard.html")
 
