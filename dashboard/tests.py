@@ -14,6 +14,4 @@ class DashboardTests(TestCase):
 
     def test_dashboard_staff_status_code(self):
         response = self.client.get('/dashboard/staff')
-        print(response)
-        print(type(response))
         self.assertEqual(first=response.status_code, second=200)
