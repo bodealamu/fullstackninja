@@ -37,6 +37,9 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'contactpage' %}">Contact</a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'contactpage' %}">Login</a>
+          </li>
           {% if user.is_superuser %}
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'dashboard' %}">Admin Dashboard</a>
