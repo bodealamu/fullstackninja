@@ -39,6 +39,11 @@ def dashboard_tutorialvideos(request):
 
 
 @staff_member_required(login_url="accounts/login.html")
+def dashboard_profile(request):
+    return render(request=request, context=None, template_name="dashboard/dashboard_profile.html")
+
+
+@staff_member_required(login_url="accounts/login.html")
 def addcategory(request):
     if request.method == "POST":
         print(request.user)
