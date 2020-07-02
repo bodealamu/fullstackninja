@@ -13,26 +13,32 @@ def dashboard(request):
     return render(request=request, context=None, template_name="dashboard/dashboard.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def dashboard_category(request):
     return render(request=request, context=None, template_name="dashboard/dashboard_category.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def dashboard_staff(request):
     return render(request=request, context=None, template_name="dashboard/dashboard_staff.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def dashboard_subcategory(request):
     return render(request=request, context=None, template_name="dashboard/dashboard_subcategory.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def dashboard_tutorialseries(request):
     return render(request=request, context=None, template_name="dashboard/dashboard_Tutorialseries.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def dashboard_tutorialvideos(request):
     return render(request=request, context=None, template_name="dashboard/dashboard_Tutorialvideos.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def addcategory(request):
     if request.method == "POST":
         print(request.user)
@@ -61,6 +67,7 @@ def addcategory(request):
     return render(request=request, context=context, template_name="dashboard/dashboard_addcategory.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def addsubcategory(request):
     if request.method == "POST":
         form = SubCategoryForm(request.POST, request.FILES)
@@ -87,6 +94,7 @@ def addsubcategory(request):
     return render(request=request, template_name="dashboard/dashboard_addsubcategory.html", context = context)
 
 
+@staff_member_required(login_url="accounts/login.html")
 def addtutorialseries(request):
     if request.method == "POST":
         form = TutorialForm(request.POST, request.FILES)
@@ -112,6 +120,7 @@ def addtutorialseries(request):
     return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialseries.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def addtutorialvideos(request):
     if request.method == "POST":
         form = TutorialVideoForm(request.POST, request.FILES)
@@ -135,6 +144,7 @@ def addtutorialvideos(request):
     return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialvideos.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def view_categorylist(request):
     categories = Category.objects.all()
 
@@ -145,6 +155,7 @@ def view_categorylist(request):
     return render(request=request, context=context, template_name="dashboard/categorylist.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def view_subcategorylist(request):
     subcategories = SubCategory.objects.all()
 
@@ -155,6 +166,7 @@ def view_subcategorylist(request):
     return render(request=request, context=context, template_name="dashboard/subcategorylist.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def view_tutorialserieslist(request):
     tutorialseries = Tutorial.objects.all()
 
@@ -165,6 +177,7 @@ def view_tutorialserieslist(request):
     return render(request=request, context=context, template_name="dashboard/tutorialserieslist.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def view_tutorialvideoslist(request):
     tutorialvideos = TutorialVideo.objects.all()
 
@@ -175,6 +188,7 @@ def view_tutorialvideoslist(request):
     return render(request=request, context=context, template_name="dashboard/tutorialvideolist.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def delete_category(request, pk):
     category = get_object_or_404(Category, pk=pk)
     category.delete()
@@ -182,6 +196,7 @@ def delete_category(request, pk):
     return redirect(to="dashboard")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def delete_subcategory(request, pk):
     subcategory = get_object_or_404(SubCategory, pk=pk)
     subcategory.delete()
@@ -189,6 +204,7 @@ def delete_subcategory(request, pk):
     return redirect(to="dashboard")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def delete_tutorial(request, pk):
     tutorial = get_object_or_404(Tutorial, pk=pk)
     tutorial.delete()
@@ -196,6 +212,7 @@ def delete_tutorial(request, pk):
     return redirect(to="dashboard")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def delete_tutorial_video(request, pk):
     video = get_object_or_404(TutorialVideo, pk=pk)
     video.delete()
@@ -203,6 +220,7 @@ def delete_tutorial_video(request, pk):
     return redirect(to="dashboard")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def update_category(request,pk):
     category = get_object_or_404(Category, pk=pk)
     form = CategoryForm(request.POST or None, request.FILES or None, instance=category)
@@ -218,6 +236,7 @@ def update_category(request,pk):
     return render(request=request, context=context, template_name="dashboard/dashboard_addcategory.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def update_subcategory(request,pk):
     subcategory = get_object_or_404(SubCategory, pk=pk)
     form = SubCategoryForm(request.POST or None, request.FILES or None, instance=subcategory)
@@ -233,6 +252,7 @@ def update_subcategory(request,pk):
     return render(request=request, template_name="dashboard/dashboard_addsubcategory.html", context=context)
 
 
+@staff_member_required(login_url="accounts/login.html")
 def update_tutorial(request,pk):
     tutorial = get_object_or_404(Tutorial, pk=pk)
     form = TutorialForm(request.POST or None, request.FILES or None, instance=tutorial)
@@ -249,6 +269,7 @@ def update_tutorial(request,pk):
     return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialseries.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def update_tutorialvideo(request, pk):
     video = get_object_or_404(TutorialVideo, pk=pk)
     form = TutorialVideoForm(request.POST or None, request.FILES or None, instance=video)
@@ -265,10 +286,12 @@ def update_tutorialvideo(request, pk):
     return render(request=request, context=context, template_name="dashboard/dashboard_addtutorialvideos.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def dashboard_messages(request):
     return render(request=request, context=None, template_name="dashboard/dashboard_messages.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def view_read_messages(request):
     read_messages = Contact.objects.filter(message_read=True)
 
@@ -279,6 +302,7 @@ def view_read_messages(request):
     return render(context=context, request=request, template_name="dashboard/read_messages.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def view_unread_messages(request):
     unread_messages = Contact.objects.filter(message_read=False)
 
@@ -289,6 +313,7 @@ def view_unread_messages(request):
     return render(context=context, request=request, template_name="dashboard/unread_messages.html")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def delete_read_messages(request, pk):
     read_message = get_object_or_404(Contact, pk=pk)
     print(read_message)
@@ -299,6 +324,7 @@ def delete_read_messages(request, pk):
     return redirect(to="dashboard")
 
 
+@staff_member_required(login_url="accounts/login.html")
 def mark_as_read(request, pk):
     unread_message = get_object_or_404(Contact, pk=pk)
     unread_message.message_read = True
