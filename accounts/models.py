@@ -91,8 +91,8 @@ class CustomUser(PermissionsMixin, AbstractBaseUser):
         """ Return the short name representation"""
         return self.first_name
 
-    def get_email_field_name(self):
-        return self.email
+    # def get_email_field_name(self):
+    #     return self.EMAIL_FIELD
 
 
 

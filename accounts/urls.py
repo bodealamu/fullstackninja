@@ -13,9 +13,10 @@ urlpatterns = [
     path("password_change/done/",
          authentication_views.PasswordChangeDoneView.as_view(template_name="accounts/passwordchangedone.html"),
          name="password_change_done"),
-    path("password_reset/", authentication_views.PasswordResetView.as_view(template_name="accounts/passwordreset.html"),
+    path("password_reset/", authentication_views.PasswordResetView.as_view(),
          name="password_reset"),
 
 
 
 ]
+#template_name="accounts/passwordreset.html"

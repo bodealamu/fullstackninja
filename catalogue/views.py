@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo, Contact
 from django.shortcuts import get_object_or_404
 from catalogue.forms import ContactForm
+from django.contrib.auth import (
+    authenticate, get_user_model, password_validation,
+)
 
 # Create your views here.
 
@@ -31,10 +34,13 @@ def home(request):
     :param request:
     :return:
     """
+    UserModel = get_user_model()
+    print(UserModel)
     categories = Category.objects.all()
     all_videos = TutorialVideo.objects.all()
 
     number_tutorial_videos = len(all_videos)
+
 
     context={
         "categories":categories,
