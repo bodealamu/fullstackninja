@@ -2,7 +2,7 @@
 
 {% block content %}
  <div class="jumbotron text-center">
-    <h1 class="display-2">The FullSTack Ninja</h1>
+    <h1 class="display-2">The FullStack Ninja</h1>
     <h4 class="display-6">List of Tutorial series.</h4>
  </div>
 
@@ -22,7 +22,7 @@
                         <a class="btn btn-success" href="{% url 'updatetutorial' pk=category.pk %}" >Update</a>
                     </div>
                     <div class="col-2">
-                        <a class="btn btn-danger" href="#" >Delete</a>
+                        <a class="btn btn-danger" href="{% url 'deletetutorial' pk=category.pk %}" >Delete</a>
                     </div>
                 </div>
             </div>
