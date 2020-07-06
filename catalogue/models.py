@@ -4,6 +4,7 @@ from django.conf import settings
 
 
 class Category(models.Model):
+    """Database model which represents Category objects"""
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=40, unique=True, verbose_name="Name of Category")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
@@ -17,6 +18,7 @@ class Category(models.Model):
 
 
 class SubCategory(models.Model):
+    """Database model for subcategories"""
     id = models.AutoField(primary_key=True)
     classification = models.ForeignKey(to=Category, on_delete=models.CASCADE,
                                  verbose_name="What category does this belong?")
@@ -32,6 +34,7 @@ class SubCategory(models.Model):
 
 
 class Tutorial(models.Model):
+    """Database models for representing Tutorial objects."""
     id = models.AutoField(primary_key=True)
     description = models.TextField(verbose_name="Describe what this section is about.")
     title = models.CharField(max_length=40, unique=True, verbose_name="Name of Tutorial series")
@@ -48,6 +51,7 @@ class Tutorial(models.Model):
 
 
 class TutorialVideo(models.Model):
+    """Database models for representing tutorial video objects"""
     id = models.AutoField(primary_key=True)
     youtube_link = models.URLField(verbose_name="Youtube link for uploaded video", max_length=150)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
@@ -62,6 +66,7 @@ class TutorialVideo(models.Model):
 
 
 class Contact(models.Model):
+    """Database models for representing messages sent through the contact page."""
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30, verbose_name="Your full name (30 characters)")
     email = models.EmailField(max_length=50, verbose_name="Your email address")

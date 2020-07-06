@@ -10,6 +10,7 @@ from django.contrib.auth import (
 
 
 def contactpage(request):
+    """View function for handling contact page messages."""
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -155,6 +156,7 @@ def tutorial_series_list(request, category_slug,  slug_subcategory):
 
 
 def all_subcategorylist(request):
+    """View function for viewing all tutorial subcategory objects"""
     subcategories = SubCategory.objects.all()
 
     context = {
@@ -165,6 +167,7 @@ def all_subcategorylist(request):
 
 
 def all_tutorialserieslist(request):
+    """View function for viewing all tutorial series objects"""
     tutorialseries = Tutorial.objects.all()
 
     context = {
