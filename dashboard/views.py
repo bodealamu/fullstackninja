@@ -64,11 +64,11 @@ def addcategory(request):
         form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
             submission = form.save(commit=False)
-            title = form.cleaned_data["title"]
-            slug_title = slugify(title)
+            # title = form.cleaned_data["title"]
+            # slug_title = slugify(title)
             logged_in_user = request.user
             submission.author = logged_in_user
-            submission.slug = slug_title
+            # submission.slug = slug_title
             form.save(commit=True)
             message = "Category has been successfully added."
             messages.success(request=request, message=message)

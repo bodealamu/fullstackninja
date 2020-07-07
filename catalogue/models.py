@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.template.defaultfilters import slugify
 # Create your models here.
 
 
@@ -11,10 +12,15 @@ class Category(models.Model):
     description = models.TextField(verbose_name="Describe what this section is about.")
     category_image = models.ImageField(verbose_name="Logo for this category", upload_to="images/Category/",
                                        max_length=200, blank=False)
-    slug = models.SlugField(max_length=200, default="default_slug", unique=True)
+    slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs): # new
+
+        self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
 
 class SubCategory(models.Model):
