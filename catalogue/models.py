@@ -33,10 +33,15 @@ class SubCategory(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     description = models.TextField(verbose_name="Describe what this section is about.")
     title = models.CharField(max_length=40, unique=True, verbose_name="Name of Sub-Category")
-    slug = models.SlugField(max_length=200, default="default_slug", unique=True)
+    slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs): # new
+
+        self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
 
 class Tutorial(models.Model):
@@ -50,10 +55,15 @@ class Tutorial(models.Model):
     tutorial_logo = models.ImageField(upload_to="images/Tutorial/", max_length=200,
                                       verbose_name="Logo for tutorial series", blank=False)
     github_repo_link = models.URLField(verbose_name="Link to github repo", max_length=150)
-    tutorial_series_slug = models.SlugField(max_length=200, default="default_slug", unique=True)
+    tutorial_series_slug = models.SlugField(null=False,  unique=True)
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs): # new
+
+        self.tutorial_series_slug = slugify(self.title)
+        return super().save(*args, **kwargs)
 
 
 class TutorialVideo(models.Model):
@@ -65,10 +75,15 @@ class TutorialVideo(models.Model):
     video_title = models.CharField(max_length=40, unique=True, verbose_name="Title of uploaded video",)
     tutorial_category = models.ForeignKey(to=Tutorial, on_delete=models.CASCADE,
                                           verbose_name="What Tutorial series does this belong?")
-    tutorial_video_slug = models.SlugField(max_length=200, default="default_slug", unique=True)
+    tutorial_video_slug = models.SlugField(null=False,  unique=True)
 
     def __str__(self):
         return self.video_title
+
+    def save(self, *args, **kwargs): # new
+
+        self.tutorial_video_slug = slugify(self.video_title)
+        return super().save(*args, **kwargs)
 
 
 class Contact(models.Model):

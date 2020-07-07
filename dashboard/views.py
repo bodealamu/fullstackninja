@@ -92,12 +92,12 @@ def addsubcategory(request):
         form = SubCategoryForm(request.POST, request.FILES)
         if form.is_valid():
             submission = form.save(commit=False)
-            title = form.cleaned_data["title"]
-            slugged_title = slugify(title)
+            # title = form.cleaned_data["title"]
+            # slugged_title = slugify(title)
             logged_in_user = request.user
 
             submission.author = logged_in_user
-            submission.slug  = slugged_title
+            # submission.slug  = slugged_title
             form.save(commit=True)
             message = "Subcategory successfully added"
             messages.success(request=request, message=message)
@@ -120,11 +120,11 @@ def addtutorialseries(request):
         form = TutorialForm(request.POST, request.FILES)
         if form.is_valid():
             submission = form.save(commit=False)
-            title = form.cleaned_data["title"]
-            slugged_title = slugify(title)
+            # title = form.cleaned_data["title"]
+            # slugged_title = slugify(title)
 
             submission.author = request.user
-            submission.tutorial_series_slug = slugged_title
+            # submission.tutorial_series_slug = slugged_title
             form.save(commit=True)
             message = "Tutorial series has been successfully added."
             messages.success(request=request, message=message)
@@ -147,10 +147,10 @@ def addtutorialvideos(request):
         form = TutorialVideoForm(request.POST, request.FILES)
         if form.is_valid():
             submission = form.save(commit=False)
-            title = form.cleaned_data["video_title"]
-            slugged_title = slugify(title)
+            # title = form.cleaned_data["video_title"]
+            # slugged_title = slugify(title)
             submission.author = request.user
-            submission.tutorial_video_slug = slugged_title
+            # submission.tutorial_video_slug = slugged_title
             form.save(commit=True)
             message = "Tutorial video added successfully."
             messages.success(request=request, message=message)
