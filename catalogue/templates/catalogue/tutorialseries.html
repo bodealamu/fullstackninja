@@ -14,7 +14,7 @@
       <div class="card-columns ">
           {% for tutorial in tutorialseries %}
               <div class="card p-3 shadow" >
-                  <img src={{tutorial.tutorial_logo.url}} width="300" height="300" class="card-img-top" alt="...">
+                  <img src={{tutorial.tutorial_logo.url}}  class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{ tutorial.title }}</h5>
                     <p class="card-text">{{tutorial.description}}</p>
@@ -24,7 +24,7 @@
                   <p class="card-text"></p>
                 </div>
                 <div class="card-body">
-                  <a href="{% url 'hometutorialvideos' category_slug=category.slug slug_subcategory=subcategory.slug tutorial_series_slug=tutorial.tutorial_series_slug %}" class="btn btn-primary">Open</a>
+                  <a href="{% url 'hometutorialvideos' category_slug=category.slug slug_subcategory=subcategory.slug tutorial_series_slug=tutorial.tutorial_series_slug %}" class="btn btn-info">Open</a>
                 </div>
               </div>
           {% endfor %}

@@ -15,7 +15,7 @@
         {% for category in subcategories %}
           <div class="card p-3 shadow" >
 
-            <img src={{category.subcategory_logo.url}} width="300" height="300" class="card-img-top" alt="...">
+            <img src={{category.subcategory_logo.url}}  class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{category.title}}</h5>
 <!--                <p>{{category.slug}}</p>-->
@@ -23,7 +23,7 @@
 <!--                <p>{{category.classification.slug}}</p>-->
             </div>
             <div class="card-body">
-              <a href="{% url 'hometutorialseries' category_slug=category.classification.slug  slug_subcategory=category.slug %}" class="btn btn-primary">Open</a>
+              <a href="{% url 'hometutorialseries' category_slug=category.classification.slug  slug_subcategory=category.slug %}" class="btn btn-warning">Open</a>
 
             </div>
           </div>
