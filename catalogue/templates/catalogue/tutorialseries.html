@@ -27,6 +27,10 @@
                   <a href="{% url 'hometutorialvideos' category_slug=category.slug slug_subcategory=subcategory.slug tutorial_series_slug=tutorial.tutorial_series_slug %}" class="btn btn-info">Open</a>
                 </div>
               </div>
+          {% empty %}
+                <div class="card p-1 shadow ">
+                    <p>Coming soon...</p>
+                </div>
           {% endfor %}
 
       </div>
