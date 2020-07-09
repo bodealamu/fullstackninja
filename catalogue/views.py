@@ -5,6 +5,7 @@ from catalogue.forms import ContactForm
 from django.contrib.auth import (
     authenticate, get_user_model, password_validation,
 )
+from django.contrib import messages
 
 # Create your views here.
 
@@ -15,6 +16,8 @@ def contactpage(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            message = "Your Contact message has been sent."
+            messages.success(request=request, message=message)
 
             return redirect(to="home")
 
