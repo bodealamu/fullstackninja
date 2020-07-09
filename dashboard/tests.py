@@ -1,10 +1,19 @@
 from django.test import TestCase, SimpleTestCase
-
+from django.contrib.auth import get_user_model
 # Create your tests here.
 
 
 class DashboardTests(TestCase):
+
+    def setup(self):
+        self.user = get_user_model().objects.create_superuser( email='testuser@email.com',
+            password='secret',
+            first_name='test',
+            last_name='user',
+        )
+
     def test_dashboard_page_status_code(self):
+        self.client.login(email='testuser@email.com', password='secret')
         response = self.client.get('/dashboard/')
         self.assertEqual(first=response.status_code, second=200)
 
