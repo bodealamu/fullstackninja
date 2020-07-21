@@ -2,3 +2,4 @@ django==3.0.3
 pillow==7.1.2
 docker-compose
 awsebcli==3.18.1
+mysqlclient
