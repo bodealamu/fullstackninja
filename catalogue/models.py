@@ -7,7 +7,7 @@ from django.template.defaultfilters import slugify
 class Category(models.Model):
     """Database model which represents Category objects"""
     id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=40, unique=True, verbose_name="Name of Category")
+    title = models.CharField(max_length=100, unique=True, verbose_name="Name of Category")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     description = models.TextField(verbose_name="Describe what this section is about.")
     category_image = models.ImageField(verbose_name="Logo for this category", upload_to="images/Category/",
@@ -32,7 +32,7 @@ class SubCategory(models.Model):
                                          blank=False,verbose_name="Logo for the subcategory")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     description = models.TextField(verbose_name="Describe what this section is about.")
-    title = models.CharField(max_length=40, unique=True, verbose_name="Name of Sub-Category")
+    title = models.CharField(max_length=100, unique=True, verbose_name="Name of Sub-Category")
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
@@ -48,7 +48,7 @@ class Tutorial(models.Model):
     """Database models for representing Tutorial objects."""
     id = models.AutoField(primary_key=True)
     description = models.TextField(verbose_name="Describe what this section is about.")
-    title = models.CharField(max_length=40, unique=True, verbose_name="Name of Tutorial series")
+    title = models.CharField(max_length=100, unique=True, verbose_name="Name of Tutorial series")
     tutorial_category = models.ForeignKey(to=SubCategory, on_delete=models.CASCADE,
                                           verbose_name="What subcategory does this tutorial belong?")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
@@ -72,7 +72,7 @@ class TutorialVideo(models.Model):
     youtube_link = models.URLField(verbose_name="Youtube link for uploaded video", max_length=150)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
     description = models.TextField(verbose_name="Describe what this section is about.")
-    video_title = models.CharField(max_length=40, unique=True, verbose_name="Title of uploaded video",)
+    video_title = models.CharField(max_length=100, unique=True, verbose_name="Title of uploaded video",)
     tutorial_category = models.ForeignKey(to=Tutorial, on_delete=models.CASCADE,
                                           verbose_name="What Tutorial series does this belong?")
     tutorial_video_slug = models.SlugField(null=False,  unique=True)
