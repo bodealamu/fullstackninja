@@ -4,22 +4,24 @@
 
 <div class="jumbotron text-center" style="background-color:	#FFFFFF">
       <div class="container">
-        <h1 class="display-4">The FullStack Ninja</h1>
+        <h1 class="display-4">Udemy Courses</h1>
           <hr class="my-4">
-        <h2 class=" lead">Catalogue of Practical programming tutorials with over {{number_tutorial_videos}} videos</h2>
+        <h2 class=" lead">All courses are offered at a discount with coupon code <span style="color: red">INSTRUCTORCODE</span></h2>
       </div>
     </div>
     <div class="container">
       <div class="card-columns ">
-        {% for category in categories %}
+        {% for course in courses %}
           <div class="card p-3 shadow" >
-            <img src={{category.category_image.url}} class="card-img-top" alt="...">
+            <img src={{course.logo.url}} class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">{{category.title}}</h5>
-              <p class="card-text">{{category.description}}</p>
+              <h6 class="card-title">{{course.title}}</h6>
+                <p>Udemy Course price ${{course.price}}</p>
+                <p style="color: red">Instructor discount price ${{course.discount_price}}</p>
+
             </div>
             <div class="card-body">
-              <a href="{% url 'subcategoriesview' category_slug=category.slug %}" class="btn btn-success">Open</a>
+              <a href="{{course.course_link}}" target="_blank" class="btn btn-danger">Buy at discount</a>
 <!--              <a href="#" class="card-link">Another link</a>-->
             </div>
           </div>

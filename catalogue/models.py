@@ -4,6 +4,26 @@ from django.template.defaultfilters import slugify
 # Create your models here.
 
 
+class Courses(models.Model):
+    """Database model for Courses"""
+    id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=60,
+                             unique=True,
+                             verbose_name="Title of the course")
+    logo = models.ImageField(verbose_name="Image logo for course",
+                             upload_to="images/Courses",
+                             max_length=300,
+                             blank=False)
+    description = models.TextField(verbose_name="Short description about the course.")
+    creator = models.CharField(max_length=90,
+                               verbose_name="Name of course creator")
+    price = models.FloatField(verbose_name="Price of course")
+    discount_price = models.FloatField(default=10,
+                                       verbose_name="Discounted Price of course")
+    course_link = models.URLField(verbose_name="Link to course discounted price",
+                                  max_length=350)
+
+
 class Category(models.Model):
     """Database model which represents Category objects"""
     id = models.AutoField(primary_key=True)

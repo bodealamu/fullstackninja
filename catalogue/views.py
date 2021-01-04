@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo, Contact
+from catalogue.models import Category, SubCategory, Tutorial, TutorialVideo, Contact, Courses
 from django.shortcuts import get_object_or_404
 from catalogue.forms import ContactForm
 from django.contrib.auth import (
@@ -7,7 +7,17 @@ from django.contrib.auth import (
 )
 from django.contrib import messages
 
+
 # Create your views here.
+def course_list(request):
+    """View function for courses"""
+    course_list = Courses.objects.all()
+
+    context = {
+        "courses":course_list
+    }
+
+    return render(request=request, context=context, template_name="catalogue/courses.html")
 
 
 def contactpage(request):
